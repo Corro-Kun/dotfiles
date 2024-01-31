@@ -1,0 +1,14 @@
+#!/bin/bash
+
+LOCK_FILE="$HOME/.cache/eww-profile.lock"
+EWW_BIN="$HOME/.local/bin/eww/eww"
+
+if [[ ! -f "$LOCK_FILE" ]]; then
+    touch "$LOCK_FILE"
+    eww -c ~/.config/eww/profile open profile
+    $HOME/.config/eww/bar/scripts/open.py
+else
+    rm "$LOCK_FILE"
+    eww -c ~/.config/eww/profile close-all
+    $HOME/.config/eww/bar/scripts/close.py
+fi

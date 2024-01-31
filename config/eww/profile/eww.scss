@@ -1,0 +1,37 @@
+.profile {
+    background-color: #FCE8DA;
+    padding: 2px;
+}
+
+.ficha {
+    background-color: #FCE8DA; /* Reemplaza $background con un valor concreto */
+    border-radius: 12px;
+    margin: 0.5rem;
+    padding: 3.1rem;
+}
+
+.pfp {
+    background-image: url("../dashboard/assets/profile.png");
+    background-repeat: no-repeat;
+    background-size: 15rem;
+    background-position: center;
+    padding: 90px;
+    border-radius: 50%;
+    border: 2px solid #634449; /* Reemplaza $foreground con un valor concreto */
+}
+
+.pfptxt {
+    margin-top: 30px;
+    color: #661743;
+    font-family: 'Cartograph CF', sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.subpfptxt {
+    color: #661743;
+    font-family: 'Comic Mono', monospace;
+    margin-top: 10px;
+    font-size: 23px;
+}

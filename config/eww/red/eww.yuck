@@ -1,0 +1,40 @@
+(defpoll wifi :interval "1s"  "~/.config/eww/red/scripts/wifi --wifi")
+(defpoll vpn :interval "1s"  "~/.config/eww/red/scripts/wifi --vpn")
+
+(defwidget ether-widget []
+  (box  :class "ether"
+        :orientation "v"
+        :halign "center"
+        :valign "center"
+        (box    :orientation "h"
+                :space-evenly "false" 
+                :vexpand "false" 
+                :hexpand "false"
+                :halign "center"
+                :valign "center"
+                (label  :class "wifi-icon"
+                        :text   ""
+                ) 
+                (label  :class "wifi"
+                        :text   wifi
+                ) 
+        )
+        (box    :orientation "h"
+                :space-evenly "false" 
+                :vexpand "false" 
+                :hexpand "false"
+                :halign "center"
+                :valign "center"
+                (label  :class "vpn-icon"
+                        :text   ""
+                ) 
+                (label  :class "vpn"
+                        :text   vpn
+                )
+        )
+  ))
+
+(defwindow red
+  :geometry (geometry :x "-80px" :y "75px" :anchor "right top")
+  :wm-ignore false
+  (ether-widget))

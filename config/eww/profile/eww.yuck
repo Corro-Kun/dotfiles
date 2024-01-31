@@ -1,0 +1,24 @@
+(defpoll NAME  :interval "5m"  "hostname")
+(defpoll UNAME :interval "5m"  "whoami")
+
+;; Widegets ;;
+
+;; Definición del widget ficha
+(defwidget ficha []
+  (box :orientation "v"
+       :space-evenly "false"
+       :class "ficha"
+       (box :orientation "h"
+            :space-evenly "false"
+            (box :class "pfp"))
+       (box :orientation "v"
+            :space-evenly "false"
+            (box :class "pfptxt" :valign "center" NAME)
+            (box :class "subpfptxt" :halign "center" UNAME))))
+
+;; Windows ;;
+
+(defwindow profile
+    :geometry (geometry :x "80px" :y "76px" :anchor "left top")
+    :wm-ignore false
+    (ficha))

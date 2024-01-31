@@ -1,0 +1,145 @@
+* {
+  all: unset;
+}
+
+// Variable Color's
+$background: #FCE8DA;
+$foreground: #634449;
+
+$black: $background;
+$gray: #1c1e27;
+$red: #dd6777;
+$green: #661743;
+$yellow: #ecd3a0;
+$blue: #86aaec;
+$magenta: #c296eb;
+$cyan: #93cee9;
+$white: $foreground;
+$archlogo: #0f94d2;
+
+@mixin fadeIn{
+  @keyframes fadeIn{
+    from{
+      opacity: 0;
+    }
+    to{
+      opacity: 1;
+    }
+  }
+  animation: fadeIn .5s ease-in-out;
+}
+
+// The bar
+.eww_bar {
+  @include fadeIn;
+  background-color: $background;
+  padding: 0.3rem;
+  border-radius: 9px;
+}
+
+// Launcher
+.launcher_icon {
+  margin: 1px;
+  padding: 20px;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+// Workspaces
+.works {
+  font-family: "Material Design Icons Desktop";
+  padding: 0.5rem 0.7rem 0.5rem 0.7rem;
+  background-color: $black;
+  border-radius: 5px;
+}
+
+.workspace-focused {
+  font-size: 22px;
+  color: $green;
+  margin: 0.35rem 0 0.35rem 0;
+}
+
+.workspace-occupied {
+  font-size: 22px;
+  color: $foreground;
+  margin: 0.35rem 0 0.35rem 0;
+}
+
+.workspace-empty {
+  font-size: 22px;
+  color: #2E2B55;
+  margin: 0.35rem 0 0.35rem 0;
+}
+
+// icons info
+.control {
+  padding: 0.7rem;
+  background-color: $black;
+  border-radius: 5px;
+}
+
+.trayicon {
+  background-repeat: no-repeat;
+  background-size: 25px;
+  min-height: 25px;
+  min-width: 7px;
+  margin: 0.2rem 0 0.2rem 0;
+}
+
+.bar-updates-text {
+  font-family: "JetBrainsMono NF";
+  font-size: 14px;
+  font-weight: Bold;
+  color: #8ea6c4;
+  margin: .4rem 0 .2rem .2rem;
+}
+
+scale trough {
+  all: unset;
+  background-color: #E3C99F;
+  border-radius: 5px;
+  min-height: 80px;
+  min-width: 10px;
+  margin: 0.3rem 0 0.3rem 0.1rem;
+}
+
+.volbar trough highlight {
+  background: linear-gradient($foreground, #661743);
+  border-radius: 5px;
+}
+
+// Clock
+.time {
+  font-family: JetBrainsMono NF;
+  font-weight: bold;
+  font-size: 1.5em;
+  background-color: $black;
+  color: $white;
+  border-radius: 5px;
+  padding: 0.7rem 0 0.5rem 0;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+// Powermenu
+.powermenu {
+  font-family: Material Design Icons Desktop;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.powericons {
+  margin: 0.2rem 0 0.2rem 0;
+}
+
+.button-bspres,
+.button-reb,
+.button-lock,
+.button-quit,
+.button-powermenu,
+.button-off {
+  background-repeat: no-repeat;
+  background-size: 25px;
+  min-height: 25px;
+  min-width: 7px;
+  margin: 0rem 0rem .5rem 8px;
+}

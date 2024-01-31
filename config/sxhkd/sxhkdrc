@@ -1,0 +1,151 @@
+#################################################
+#	███████╗██╗  ██╗██╗  ██╗██╗  ██╗██████╗		#
+#	██╔════╝╚██╗██╔╝██║  ██║██║ ██╔╝██╔══██╗	#
+#	███████╗ ╚███╔╝ ███████║█████╔╝ ██║  ██║	#
+#	╚════██║ ██╔██╗ ██╔══██║██╔═██╗ ██║  ██║	#
+#	███████║██╔╝ ██╗██║  ██║██║  ██╗██████╔╝	#
+#	╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝		#
+################# By: Corro-Kun #################
+
+######### default config #########
+
+# terminal kitty
+super + Return
+	kitty
+
+# launcher
+super + d
+	~/.config/bspwm/scripts/rofi-launcher
+
+# kill window
+super + q
+	bspc node -c
+
+# lock screen
+super + i
+  $HOME/.config/bspwm/scripts/block
+
+######### open apps #########
+
+super + f
+	firefox
+
+super + e
+	thunar
+
+super + c
+	code
+
+######### bspwm config #########
+
+# quit/restart bspwm
+ctrl + shift + {q,r}
+	bspc {quit,wm -r}
+
+# kill window
+super + q
+	bspc node -c
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# close and kill
+#super + {_,shift + }w
+	#bspc node -{c,k}
+
+######### system config #########
+
+#screenshot
+Print
+	~/.config/bspwm/scripts/ob-screenshot --now
+
+#screenshot 5s
+alt + Print	
+	~/.config/bspwm/scripts/ob-screenshot --in5
+
+#screenshot 10s
+ctrl + Print	
+	~/.config/bspwm/scripts/ob-screenshot --in10
+
+#screenshot window
+super + Print
+	~/.config/bspwm/scripts/ob-screenshot --win
+
+#screenshot area
+super + shift + Print
+	~/.config/bspwm/scripts/ob-screenshot --area
+
+#Manage volume
+XF86Audio{Raise,Lower}Volume
+    ~/.config/bspwm/scripts/ob-volume --{inc,dec}
+
+#volume mute
+XF86AudioMute
+    ~/.config/bspwm/scripts/ob-volume --toggle
+
+# Music control
+XF86Audio{Next,Prev,Play,Stop}
+	playerctl {next,previous,play-pause,stop}
+
+########## motion config ##########
+
+# focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+########### preselect ###########
+
+# preselect the direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+########### window config ###########
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,top 0 20,top 0 -20,left 20 0}
+
+#super + @button1
+#	bspc node -t floating
+
+#super + @button3
+#	bspc node -t fullscreen
+
+super + space
+	bspc node @/ -t floating
+
+super + shift + f
+	bspc node @/ -t fullscreen
+
+shift + ctrl + f
+	bspc node @/ -t tiled
+
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+# send the newest marked node to the newest preselected node
+super + y
+	bspc node newest.marked.local -n newest.!automatic.local
+
+# swap the current node and the biggest window
+super + g
+	bspc node -s biggest.window

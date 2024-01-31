@@ -1,0 +1,70 @@
+#!/bin/bash
+
+Cover=$HOME/.cache/cover.png
+
+get_title(){
+    title=$(playerctl metadata --format {{title}} 2> /dev/null)
+    echo $title
+}
+
+get_art(){
+    artist=$(playerctl metadata --format {{artist}} 2> /dev/null)
+    echo $artist
+}
+
+get_status(){
+    status=$(playerctl status 2> /dev/null)
+    if [[ $status == "Playing" ]]; then
+        echo ""
+    elif [[ $status == "Paused" ]]; then
+        echo ""
+    else
+        echo ""
+    fi
+}
+
+get_cover(){
+    img=$(playerctl metadata --format {{mpris:artUrl}})
+    result=$(curl -s $img --output $Cover)
+    echo $Cover
+}
+
+set_play(){
+    playerctl play-pause
+}
+
+set_next(){
+    playerctl next
+}
+
+set_prev(){
+    playerctl previous
+}
+
+if [[ ! -f "$Cover" ]]; then
+    touch "$Cover"
+fi
+
+case $1 in
+    --title)
+        get_title
+        ;;
+    --art)
+        get_art
+        ;;
+    --status)
+        get_status
+        ;;
+    --cover)
+        get_cover
+        ;;
+    --play)
+        set_play
+        ;;
+    --next)
+        set_next
+        ;;
+    --prev)
+        set_prev
+        ;;
+esac

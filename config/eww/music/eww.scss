@@ -1,0 +1,60 @@
+@mixin fadeIn {
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.ficha {
+  @include fadeIn;
+  padding: 15px;
+  background-color: #FCE8DA;
+}
+.song_cover_art{
+    padding: 90px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+    border: 2px solid #634449;
+}
+.info{
+    padding-left: 80px;
+    padding-right: 80px;
+}
+.art{
+    font-size: 20px;
+    color: #661743;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.title{
+    font-family: Cartograph CF;
+    font-style: italic;
+    margin-top: 10px;
+    font-size: 18px;
+    color: #634449;
+ 
+}
+.control{
+    margin-top: 20px;
+}
+.control button{
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    color: #661743;
+}
+.control button:hover{
+    color: #000000;
+}
+.btn_left{
+    margin-right: 10px;
+}
+.btn_right{
+    margin-left: 14px;
+}

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+## Open Applications
+FILE="$HOME/.cache/eww_launch.xyz"
+EWW="$HOME/.local/bin/eww -c $HOME/.config/eww/dashboard"
+cmd="xdg-open"
+
+if [[ "$1" == "--firefox" ]]; then
+	eww -c ~/.config/eww/dashboard close dashboard && firefox &
+
+elif [[ "$1" == "--telegram" ]]; then
+	eww -c ~/.config/eww/dashboard close dashboard && telegram-desktop &
+
+elif [[ "$1" == "--github" ]]; then
+	eww -c ~/.config/eww/dashboard close dashboard &&  firefox "https://github.com" &
+
+elif [[ "$1" == "--reddit" ]]; then
+	eww -c ~/.config/eww/dashboard close dashboard &&  $cmd "https://reddit.com" &
+
+elif [[ "$1" == "--code" ]]; then
+	eww -c ~/.config/eww/dashboard close dashboard && code &
+
+elif [[ "$1" == "--discord" ]]; then
+	eww -c ~/.config/eww/dashboard close dashboard && discord &
+
+elif [[ "$1" == "--spotify" ]]; then
+	eww -c ~/.config/eww/dashboard close dashboard && spotify &
+fi

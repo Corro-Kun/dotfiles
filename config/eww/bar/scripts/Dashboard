@@ -1,0 +1,14 @@
+#!/bin/bash
+
+LOCK_FILE="$HOME/.cache/eww-dashboard.lock"
+EWW_BIN="$HOME/.local/bin/eww/eww"
+
+if [[ ! -f "$LOCK_FILE" ]]; then
+    touch "$LOCK_FILE"
+    eww -c $HOME/.config/eww/dashboard open dashboard
+    paplay $HOME/.config/eww/bar/sounds/open_dashboard.ogg
+else
+    rm "$LOCK_FILE"
+    eww -c $HOME/.config/eww/dashboard close dashboard
+    paplay $HOME/.config/eww/bar/sounds/close_dashboard.ogg
+fi

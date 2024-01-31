@@ -1,0 +1,28 @@
+#!/bin/bash
+
+get_Wifi(){
+    ETHER=$(ip addr show | grep 'inet 192.168' | awk '{print $2}' | cut -d '/' -f1);
+    if [[ $ETHER == "" ]]; then
+        echo "Not Connected";
+    else
+        echo " " $ETHER;
+    fi
+}
+
+get_VPN(){
+    VPN=$(ip addr show | grep 'tun0' | awk '{print $2}' | cut -d ':' -f2 | cut -d '/' -f1);
+    if [[ $VPN == "" ]]; then
+        echo "Not Connected";
+    else
+        echo " " $VPN;
+    fi
+}
+
+case $1 in
+    --wifi)
+        get_Wifi
+        ;;
+    --vpn)
+        get_VPN
+        ;;
+esac

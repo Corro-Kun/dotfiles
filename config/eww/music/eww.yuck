@@ -1,0 +1,56 @@
+(defpoll cover_art :interval "1s"  "~/.config/eww/music/scripts/ControlMusic --cover")
+(defpoll art :interval "1s"  "~/.config/eww/music/scripts/ControlMusic --art")
+(defpoll title :interval "1s"  "~/.config/eww/music/scripts/ControlMusic --title")
+(defpoll status :interval "0.2s"  "~/.config/eww/music/scripts/ControlMusic --status")
+
+(defwidget ficha[]
+    (box    :class "ficha" 
+            :orientation "h" 
+            :space-evenly "false" 
+            :vexpand "false" 
+            :hexpand "false"
+            (box    :class "song_cover_art" 
+                    :vexpand "false" 
+                    :hexpand "false"
+                    :style "background-image: url('${cover_art}');")
+            (box    :class "info"
+                    :orientation "v"
+                    :space-evenly "false"
+                    :halign "center"
+                    :valign "center"
+                    (label  :class "art"
+                            :text art
+                            :limit-width 15
+                    )
+                    (label  :class "title"
+                            :text title 
+                            :limit-width 20
+                    )
+                    (box    :class "control"
+                            :orientation "h" 
+                            :space-evenly "false"
+                            :halign "center"
+                            :valign "center"
+                            (eventbox	:cursor "pointer"
+                            (button     :class "btn_left"
+                                        :onclick "$HOME/.config/eww/music/scripts/ControlMusic --prev"
+                                        ""))
+                            (eventbox	:cursor "pointer"
+                            (button     
+                                        :onclick "$HOME/.config/eww/music/scripts/ControlMusic --play"
+                                        status))
+                            (eventbox	:cursor "pointer"
+                            (button     :class "btn_right"
+                                        :onclick "$HOME/.config/eww/music/scripts/ControlMusic --next"
+                                        ""))
+                    )
+            )
+             
+    )
+)
+
+
+(defwindow music
+    :geometry (geometry :x "80px" :y "-76px" :anchor "left bottom")
+    :wm-ignore false
+    (ficha))

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+LOCK_FILE="$HOME/.cache/eww-red.lock"
+EWW_BIN="$HOME/.local/bin/eww/eww"
+
+if [[ ! -f "$LOCK_FILE" ]]; then
+    touch "$LOCK_FILE"
+    eww -c ~/.config/eww/red open red
+    $HOME/.config/eww/bar/scripts/open.py
+else
+    rm "$LOCK_FILE"
+    eww -c ~/.config/eww/red close-all
+    $HOME/.config/eww/bar/scripts/close.py
+fi

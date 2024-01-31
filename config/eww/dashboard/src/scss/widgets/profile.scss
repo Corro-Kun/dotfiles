@@ -1,0 +1,29 @@
+.profile{
+	background-color: $background;
+	border-radius: 12px;
+	margin: .5rem;
+	padding: 3.1rem;
+}
+.pfp {
+	background-image: url("assets/profile.png");
+	background-repeat: no-repeat;
+	background-size: 15rem;
+	background-position: center;
+	padding: 90px;
+	border-radius: 50%;
+	border: 2px solid $foreground;
+  }
+  .pfptxt {
+	margin-top: 30px;
+	color: $foreground;
+	font-family: Cartograph CF;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 25px;
+  }
+  .subpfptxt {
+	color: $foreground;
+	font-family: Comic Mono;
+	margin-top: 10px;
+	font-size: 23px;
+  }

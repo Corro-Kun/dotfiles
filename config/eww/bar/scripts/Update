@@ -1,0 +1,5 @@
+#!/bin/bash
+
+bspc rule -a floating_kitty state=floating rectangle=800x600+200+200
+
+kitty --single-instance --class floating_kitty sudo pacman -Syu
