@@ -1,0 +1,6 @@
+#!/bin/sh
+
+THEME="$HOME/.config/bspwm/rofi/launcher.rasi"
+LIST="$HOME/.config/bspwm/rofi/list-icons-awesome.txt"
+
+cat ${LIST} | rofi -dmenu -theme ${THEME} | awk '{print $1}' | xclip -selection clipboard

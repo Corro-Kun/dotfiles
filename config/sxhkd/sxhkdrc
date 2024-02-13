@@ -17,6 +17,10 @@ super + Return
 super + d
 	~/.config/bspwm/scripts/rofi-launcher
 
+# icons
+super + u
+  $HOME/.config/bspwm/scripts/rofi-emoji
+
 # kill window
 super + q
 	bspc node -c
@@ -78,11 +82,11 @@ super + shift + Print
 
 #Manage volume
 XF86Audio{Raise,Lower}Volume
-    ~/.config/bspwm/scripts/ob-volume --{inc,dec}
+    ~/.config/openbox/scripts/ob-volume --{inc,dec}
 
 #volume mute
 XF86AudioMute
-    ~/.config/bspwm/scripts/ob-volume --toggle
+    ~/.config/openbox/scripts/ob-volume --toggle
 
 # Music control
 XF86Audio{Next,Prev,Play,Stop}
