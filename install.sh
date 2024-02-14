@@ -7,24 +7,15 @@ read answer
 
 if [ "$answer" = "s" ]; then
   echo "Instalando programas necesarios..."
-  sudo pacman -S bspwm sxhkd picom btop kitty rofi dunst feh pulsemixer mpv xclip gifsicle mplayer ranger firefox thunar papirus-icon-theme zsh playerctl viewnior maim inetutils
+  sudo pacman -S lsd bat bspwm sxhkd picom btop kitty rofi dunst feh pulsemixer mpv xclip gifsicle mplayer ranger firefox thunar papirus-icon-theme zsh playerctl viewnior maim inetutils zsh-autosuggestions 
   
   reset
 
   echo "Instalando programas de yay..."
 
-  yay -S betterlockscreen xwinwrap-git
+  yay -S betterlockscreen xwinwrap-git zsh-syntax-highlighting
 
-  yay -S -mflags --skipinteg eww-git
-
-  reset
-
-  echo "Instalando oh my zsh..."
-
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-  yay -S --noconfirm zsh-theme-powerlevel10k-git
-  echo 'source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
+  yay -S --mflags --skipinteg eww-git
 
   reset
 
@@ -49,10 +40,20 @@ if [ "$answer" = "s" ]; then
 
   sudo fc-cache -fv
 
+  sudo cp -rf ./neo.py /usr/bin/
+  sudo cp -rf ./poweroff.py /usr/bin/
+
   reset 
 
   echo "Nao esta instalado en su sistema!"
-  echo "te recomiendo reiniciar tu pc"
+  echo "Te gustaria añadir el zsh? [s/n]"
+  read options
+
+  if [ "$options" = "s" ]; then
+    yay -S --noconfirm zsh-theme-powerlevel10k-git
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  fi 
+  exit 0
 
 fi
 exit 0
